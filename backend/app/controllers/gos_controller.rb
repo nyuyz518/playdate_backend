@@ -1,0 +1,2 @@
+class GosController < ApplicationController
+end
