@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_06_044531) do
+ActiveRecord::Schema.define(version: 2018_11_08_031203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,21 @@ ActiveRecord::Schema.define(version: 2018_11_06_044531) do
   end
 
   create_table "gos", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_gos_on_event_id"
+    t.index ["user_id"], name: "index_gos_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_likes_on_event_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -47,8 +55,10 @@ ActiveRecord::Schema.define(version: 2018_11_06_044531) do
 
   create_table "tags", force: :cascade do |t|
     t.string "tag"
+    t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_tags_on_event_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,6 +68,11 @@ ActiveRecord::Schema.define(version: 2018_11_06_044531) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "gos", "events"
+  add_foreign_key "gos", "users"
+  add_foreign_key "likes", "events"
+  add_foreign_key "likes", "users"
   add_foreign_key "reviews", "events"
   add_foreign_key "reviews", "users"
+  add_foreign_key "tags", "events"
 end
