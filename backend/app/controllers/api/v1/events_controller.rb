@@ -10,13 +10,19 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def create
-    event = Event.create(event_params)
-    render json: event
+    loc = Location.new
+    loc.lat = event_params[:location][:lat]
+    loc.lng = event_params[:location][:lng]
+    event = Event.create(time:event_params[:time], location:loc, img:event_params[:img], description:event_params[:description])
+    
   end
 
   def update
-    event = Event.update(event_params)
-    render json: event
+    loc = Location.new
+    loc.lat = event_params[:location][:lat]
+    loc.lng = event_params[:location][:lng]
+    event = Event.update(time:event_params[:time], location:loc, img:event_params[:img], description:event_params[:description])
+
   end
 
   def destroy
@@ -27,7 +33,7 @@ class Api::V1::EventsController < ApplicationController
   private
 
   def event_params
-    params.permit(:time, :location, :img, :description)
+    params.permit(:time, {:location => {}}, :img, :description)
   end
 
 end
