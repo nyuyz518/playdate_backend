@@ -19235,3 +19235,81 @@ Processing by Api::V1::EventsController#index as HTML
 Completed 200 OK in 282ms (Views: 207.5ms | ActiveRecord: 43.1ms)
 
 
+Started GET "/api/v1/events" for 127.0.0.1 at 2018-11-15 13:55:53 -0500
+  [1m[35m (12.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ .bundle/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::EventsController#index as HTML
+  [1m[36mEvent Load (3.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mGo Load (1.6ms)[0m  [1m[34mSELECT "gos".* FROM "gos" WHERE "gos"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mTag Load (0.7ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "gos" ON "users"."id" = "gos"."user_id" WHERE "gos"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mReview Load (0.9ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mGo Load (0.6ms)[0m  [1m[34mSELECT "gos".* FROM "gos" WHERE "gos"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "gos" ON "users"."id" = "gos"."user_id" WHERE "gos"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mLike Load (1.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mGo Load (0.8ms)[0m  [1m[34mSELECT "gos".* FROM "gos" WHERE "gos"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "gos" ON "users"."id" = "gos"."user_id" WHERE "gos"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (208.35ms)
+Completed 200 OK in 340ms (Views: 238.5ms | ActiveRecord: 71.5ms)
+
+
+Started GET "/api/v1/events" for 127.0.0.1 at 2018-11-15 13:56:06 -0500
+Processing by Api::V1::EventsController#index as HTML
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mGo Load (1.0ms)[0m  [1m[34mSELECT "gos".* FROM "gos" WHERE "gos"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mTag Load (1.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "gos" ON "users"."id" = "gos"."user_id" WHERE "gos"."event_id" = $1[0m  [["event_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mGo Load (0.6ms)[0m  [1m[34mSELECT "gos".* FROM "gos" WHERE "gos"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "gos" ON "users"."id" = "gos"."user_id" WHERE "gos"."event_id" = $1[0m  [["event_id", 2]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mGo Load (0.5ms)[0m  [1m[34mSELECT "gos".* FROM "gos" WHERE "gos"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "gos" ON "users"."id" = "gos"."user_id" WHERE "gos"."event_id" = $1[0m  [["event_id", 3]]
+[active_model_serializers]   ↳ app/controllers/api/v1/events_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (52.46ms)
+Completed 200 OK in 56ms (Views: 41.6ms | ActiveRecord: 14.4ms)
+
+
