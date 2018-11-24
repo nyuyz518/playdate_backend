@@ -1,3 +1,3 @@
 class Location
-  attr_accessor :lat, :lng
+  attr_accessor :coordinates, :address
 end

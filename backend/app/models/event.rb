@@ -1,3 +1,4 @@
+require_dependency 'coordinates'
 class Event < ApplicationRecord
   has_many :reviews, :dependent => :delete_all
   has_many :likes, :dependent => :delete_all
