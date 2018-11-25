@@ -15,7 +15,7 @@ class Api::V1::EventsController < ApplicationController
     loc.coordinates.lat = event_params[:location][:coordinates][:lat]
     loc.coordinates.lng = event_params[:location][:coordinates][:lng]
     loc.address = event_params[:location][:address]
-    event = Event.create(time:event_params[:time], location:loc, img:event_params[:img], description:event_params[:description])
+    Event.create(time:event_params[:time], location:loc, img:event_params[:img], description:event_params[:description])
 
   end
 
@@ -25,8 +25,8 @@ class Api::V1::EventsController < ApplicationController
     loc.coordinates.lat = event_params[:location][:coordinates][:lat]
     loc.coordinates.lng = event_params[:location][:coordinates][:lng]
     loc.address = event_params[:location][:address]
-    event = Event.update(time:event_params[:time], location:loc, img:event_params[:img], description:event_params[:description])
-
+    Event.find_by(id: event_params[:id]).update(time:event_params[:time], location: loc, img:event_params[:img], description:event_params[:description])
+    
   end
 
   def destroy
@@ -37,7 +37,7 @@ class Api::V1::EventsController < ApplicationController
   private
 
   def event_params
-    params.permit(:time, {:location => {}}, :img, :description)
+    params.permit(:id, :time, {:location => {}}, :img, :description)
   end
 
 end
