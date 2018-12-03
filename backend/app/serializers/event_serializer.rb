@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :time, :location, :img, :description
+  attributes :id, :start_time, :end_time, :address, :lat, :lng, :img, :description
 
   has_many :reviews
   has_many :likes

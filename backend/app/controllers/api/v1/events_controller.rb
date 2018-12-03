@@ -1,6 +1,13 @@
 class Api::V1::EventsController < ApplicationController
+
   def index
     events = Event.all
+    render json: events
+  end
+
+  def search
+    mytime = search_params[:time]
+    events = Event.where(["start_time >= ?", mytime])
     render json: events
   end
 
@@ -10,23 +17,25 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def create
-    loc = Location.new
-    loc.coordinates = Coordinates.new
-    loc.coordinates.lat = event_params[:location][:coordinates][:lat]
-    loc.coordinates.lng = event_params[:location][:coordinates][:lng]
-    loc.address = event_params[:location][:address]
-    Event.create(time:event_params[:time], location:loc, img:event_params[:img], description:event_params[:description])
-
+    Event.create(
+      start_time: event_params[:start_time],
+      end_time: event_params[:end_time],
+      address:event_params[:address],
+      lat:event_params[:lat],
+      lng:event_params[:lng],
+      img:event_params[:img],
+      description:event_params[:description])
   end
 
   def update
-    loc = Location.new
-    loc.coordinates = Coordinates.new
-    loc.coordinates.lat = event_params[:location][:coordinates][:lat]
-    loc.coordinates.lng = event_params[:location][:coordinates][:lng]
-    loc.address = event_params[:location][:address]
-    Event.find_by(id: event_params[:id]).update(time:event_params[:time], location: loc, img:event_params[:img], description:event_params[:description])
-    
+    Event.find_by(id: event_params[:id]).update(
+      start_time: event_params[:start_time],
+      end_time: event_params[:end_time],
+      address:event_params[:address],
+      lat:event_params[:lat],
+      lng:event_params[:lng],
+      img:event_params[:img],
+      description:event_params[:description])
   end
 
   def destroy
@@ -36,8 +45,11 @@ class Api::V1::EventsController < ApplicationController
 
   private
 
+  def search_params
+    params.permit(:time, :description)
+  end
   def event_params
-    params.permit(:id, :time, {:location => {}}, :img, :description)
+    params.permit(:id, :start_time, :end_time, :address, :lat, :lng, :img, :description)
   end
 
 end

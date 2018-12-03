@@ -1,4 +1,5 @@
 require_dependency 'coordinates'
+
 class Event < ApplicationRecord
   has_many :reviews, :dependent => :delete_all
   has_many :likes, :dependent => :delete_all
@@ -7,5 +8,5 @@ class Event < ApplicationRecord
   has_many :users, through: :reviews
   has_many :users, through: :likes
   has_many :users, through: :gos
-  serialize :location, Location
+
 end
