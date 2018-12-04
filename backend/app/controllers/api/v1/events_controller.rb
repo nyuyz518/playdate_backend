@@ -7,7 +7,7 @@ class Api::V1::EventsController < ApplicationController
 
   def search
     mytime = search_params[:time]
-    events = Event.where(["start_time >= ?", mytime])
+    events = Event.where(["start_time >= ? and lat > ? and lat < ? and lng > ? and lng < ?", mytime, search_params[:lat_s], search_params[:lat_n], search_params[:lng_w], search_params[:lng_e]])
     render json: events
   end
 
@@ -46,8 +46,9 @@ class Api::V1::EventsController < ApplicationController
   private
 
   def search_params
-    params.permit(:time, :description)
+    params.permit(:time, :lat_n, :lat_s, :lng_w, :lng_e)
   end
+
   def event_params
     params.permit(:id, :start_time, :end_time, :address, :lat, :lng, :img, :description)
   end

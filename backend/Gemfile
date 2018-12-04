@@ -50,3 +50,4 @@ gem "active_model_serializers", "~> 0.10.8"
 
 gem "faker", "~> 1.9"
 gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
