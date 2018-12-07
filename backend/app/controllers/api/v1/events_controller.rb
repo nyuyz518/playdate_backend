@@ -7,7 +7,19 @@ class Api::V1::EventsController < ApplicationController
 
   def search
     mytime = search_params[:time]
-    events = Event.where(["start_time >= ? and lat > ? and lat < ? and lng > ? and lng < ?", mytime, search_params[:lat_s], search_params[:lat_n], search_params[:lng_w], search_params[:lng_e]])
+    latS = search_params[:lat_s].to_f
+    latN = search_params[:lat_n].to_f
+    lngW = search_params[:lng_w].to_f
+    lngE = search_params[:lng_e].to_f
+    if lngE >= lngW
+      events = Event.where(
+        ["start_time >= ? and lat > ? and lat < ? and lng > ? and lng < ?",
+        mytime, latS, latN, lngW, lngE])
+    else
+      events = Event.where(
+        ["start_time >= ? and lat > ? and lat < ? and (lng > ? or lng < ?)",
+        mytime, latS, latN, lngW, lngE])
+    end
     render json: events
   end
 

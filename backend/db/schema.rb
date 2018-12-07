@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_221351) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "start_time"
-    t.string "img"
+    t.text "img"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
