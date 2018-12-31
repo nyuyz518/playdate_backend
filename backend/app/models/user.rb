@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_secure_password
+  validates :username, uniqueness: { case_sensitive: false }
+
   has_many :reviews, :dependent => :delete_all
   has_many :likes, :dependent => :delete_all
   has_many :gos, :dependent => :delete_all

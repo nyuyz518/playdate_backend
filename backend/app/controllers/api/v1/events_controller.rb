@@ -6,7 +6,7 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def search
-    mytime = search_params[:time]
+    mytime = Time.at(search_params[:time].to_f/1000.0)
     latS = search_params[:lat_s].to_f
     latN = search_params[:lat_n].to_f
     lngW = search_params[:lng_w].to_f
