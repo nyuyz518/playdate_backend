@@ -1,5 +1,6 @@
 pkg
 tmp
+log
 Gemfile.lock
 .bundle
 ports
